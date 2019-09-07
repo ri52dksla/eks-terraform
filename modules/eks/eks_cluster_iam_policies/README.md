@@ -1,4 +1,4 @@
-# EKS Cluster IAM Policy
+# EKS Cluster IAM Policies
 
 Attach IAM Policies for EKS Cluster to supplied IAM Role
 
