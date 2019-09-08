@@ -4,6 +4,6 @@
 # ---------------------------------------------------------------------------------------------------------------------
 
 variable "iam_role_name" {
-  type = string
+  type        = string
   description = "The name of the IAM Role to which this module attach IAM Policies for EKS Cluster"
 }
