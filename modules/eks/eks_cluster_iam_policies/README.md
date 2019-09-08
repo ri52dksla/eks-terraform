@@ -47,7 +47,7 @@ data "aws_iam_policy_document" "eks_cluster_role_assume_role_policy_document" {
   }
 }
 
-module eks_cluster_iam_policy {
+module eks_cluster_iam_policies {
   source = "/path/to/module"
   iam_role_name = aws_iam_role.eks_cluster_role.name
 }
