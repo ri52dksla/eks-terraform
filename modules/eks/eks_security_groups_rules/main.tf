@@ -14,7 +14,7 @@ resource "aws_security_group_rule" "allow_tco_443_inbound_traffic_from_worker_no
 
 resource "aws_security_group_rule" "allow_tcp_1025_to_65535_outbound_traffic_from_control_plane_to_worker_node_security_group_rule" {
   description = "allow outbound traffic from worker node to control plane"
-  protocol = "tco"
+  protocol = "tcp"
   security_group_id = var.eks_control_plane_security_group_id
   source_security_group_id = var.eks_worker_node_security_group_id
   from_port = 1025
