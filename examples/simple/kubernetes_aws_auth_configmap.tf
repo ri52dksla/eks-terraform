@@ -1,6 +1,6 @@
 ## Create aws-auth configmap
 ## https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
-resource "kubernetes_config_map" "aws-auth-configmap" {
+resource "kubernetes_config_map" "aws_auth_configmap" {
 
   metadata {
     name      = "aws-auth"
