@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -o xtrace
+
+## Allow user supplied pre userdata code
+${pre_userdata}
+
+## copy and edit from https://github.com/aws-samples/eks-workshop/blob/599bd784074b56c56d9cf43cb0fe60429613aa14/templates/amazon-eks-nodegroup-with-mixed-instances.yml#L393
+iid=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+export AWS_DEFAULT_REGION=${aws_region}
+ilc=`aws ec2 describe-instances --instance-ids  $iid  --query 'Reservations[0].Instances[0].InstanceLifecycle' --output text`
+if [ "$ilc" == "spot" ]; then
+  /etc/eks/bootstrap.sh ${cluster_name} ${bootstrap_arguments_for_spot_fleet}
+else
+  /etc/eks/bootstrap.sh ${cluster_name} ${bootstrap_arguments_for_on_demand}
+fi
+## copy end
+
+## Allow user supplied userdata code
+${additional_userdata}
